@@ -1,0 +1,18 @@
+import tensorflow as tf
+
+# Path to your TFLite model
+model_path = r"C:\Users\DELL\emblemize_ai_flutter_new\assets\emblemize_model.tflite"
+
+try:
+    interpreter = tf.lite.Interpreter(model_path=model_path)
+    interpreter.allocate_tensors()
+    print("✅ Model loaded successfully!")
+
+    # Optional: print input/output details
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    print("Input Details:", input_details)
+    print("Output Details:", output_details)
+
+except Exception as e:
+    print("❌ Model load failed:", e)
